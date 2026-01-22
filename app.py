@@ -368,8 +368,7 @@ def main():
         st.markdown("### 📈 Visualization 2: HSC Percentage vs CGPA (EDA)")
         st.markdown("""
         **Purpose:** Shows the relationship between HSC marks and university CGPA.
-        
-        **For Viva:** This demonstrates that prior academic performance (HSC) is a strong predictor of university performance (CGPA).
+    
         """)
         fig2 = create_hsc_vs_cgpa_scatter(df)
         st.plotly_chart(fig2, use_container_width=True)
@@ -395,8 +394,7 @@ def main():
         st.markdown("### 🎯 Visualization 4: Feature Importance (Model Training)")
         st.markdown("""
         **Purpose:** Shows which features are most important for predicting CGPA.
-        
-        **For Viva:** Feature importance is calculated based on how much each feature reduces prediction error across all decision trees in the Random Forest.
+    
         """)
         fig4 = create_feature_importance_chart(model, feature_names)
         st.plotly_chart(fig4, use_container_width=True)

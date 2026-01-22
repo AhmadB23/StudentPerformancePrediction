@@ -27,18 +27,6 @@ plt.style.use('seaborn-v0_8-whitegrid')
 def load_and_preprocess_data(filepath):
     """
     Load and preprocess the dataset for machine learning.
-    
-    Steps:
-    1. Load the Excel file
-    2. Encode categorical variables (Gender)
-    3. Select features and target
-    
-    For Viva:
-    ---------
-    Q: Why do we need to encode categorical variables?
-    A: Machine learning algorithms work with numbers, not text.
-       Label encoding converts categories like 'Male'/'Female' 
-       into numbers like 0/1.
     """
     print("📂 Loading and preprocessing data...")
     
@@ -70,18 +58,6 @@ def load_and_preprocess_data(filepath):
 def split_data(X, y, test_size=0.2, random_state=42):
     """
     Split data into training and testing sets.
-    
-    For Viva:
-    ---------
-    Q: Why do we split data into training and testing sets?
-    A: To evaluate how well our model performs on unseen data.
-       - Training set (80%): Used to train the model
-       - Testing set (20%): Used to evaluate model performance
-       This helps detect overfitting (model memorizing training data).
-    
-    Q: What is random_state?
-    A: It's a seed for reproducibility. Using the same random_state
-       ensures we get the same split every time we run the code.
     """
     print(f"\n📊 Splitting data (Test size: {test_size*100}%)...")
     
@@ -99,24 +75,6 @@ def split_data(X, y, test_size=0.2, random_state=42):
 def train_model(X_train, y_train):
     """
     Train a Random Forest Regressor model.
-    
-    For Viva:
-    ---------
-    Q: Why Random Forest?
-    A: Random Forest is chosen because:
-       1. Handles both numerical and categorical features well
-       2. Provides feature importance (which features matter most)
-       3. Robust to outliers
-       4. Reduces overfitting through ensemble of trees
-       5. Good performance on medium-sized datasets
-    
-    Q: What is n_estimators?
-    A: Number of decision trees in the forest. More trees = 
-       more accurate but slower. 100 is a good default.
-    
-    Q: What is max_depth?
-    A: Maximum depth of each tree. Limits how complex each tree can be.
-       Helps prevent overfitting.
     """
     print("\n🤖 Training Random Forest model...")
     
@@ -137,27 +95,6 @@ def train_model(X_train, y_train):
 def evaluate_model(model, X_train, X_test, y_train, y_test):
     """
     Evaluate model performance using multiple metrics.
-    
-    Metrics Explained (For Viva):
-    -----------------------------
-    
-    1. R² Score (Coefficient of Determination):
-       - Range: 0 to 1 (can be negative for very poor models)
-       - Interpretation: Proportion of variance explained by the model
-       - Example: R² = 0.85 means model explains 85% of CGPA variance
-       - Higher is better
-    
-    2. MAE (Mean Absolute Error):
-       - Average of absolute differences between predicted and actual values
-       - In same units as target (CGPA points)
-       - Example: MAE = 0.2 means average error is 0.2 CGPA points
-       - Lower is better
-    
-    3. RMSE (Root Mean Squared Error):
-       - Square root of average squared errors
-       - Penalizes large errors more than MAE
-       - In same units as target (CGPA points)
-       - Lower is better
     """
     print("\n📈 Evaluating model performance...")
     
@@ -207,22 +144,6 @@ def evaluate_model(model, X_train, X_test, y_train, y_test):
 def plot_feature_importance(model, feature_names, save_path=None):
     """
     VISUALIZATION 4: Feature Importance Bar Chart (Model Training)
-    
-    Purpose:
-    --------
-    Shows which features are most important for predicting CGPA.
-    Higher importance = feature has more influence on predictions.
-    
-    For Viva:
-    ---------
-    Q: How is feature importance calculated in Random Forest?
-    A: It's based on how much each feature reduces impurity (variance)
-       across all trees. Features that lead to bigger reductions in
-       prediction error are considered more important.
-    
-    Q: Which feature is most important and why?
-    A: Typically HSC Percentage, because past academic performance
-       is the strongest predictor of future academic performance.
     """
     print("\n📊 Creating Feature Importance visualization...")
     
@@ -275,24 +196,6 @@ def plot_feature_importance(model, feature_names, save_path=None):
 def plot_actual_vs_predicted(y_test, y_pred, save_path=None):
     """
     VISUALIZATION 5: Actual vs Predicted CGPA Plot (Model Evaluation)
-    
-    Purpose:
-    --------
-    Visually shows how well predictions match actual values.
-    Points close to diagonal line = accurate predictions.
-    
-    For Viva:
-    ---------
-    Q: How do you interpret this plot?
-    A: - The diagonal red line represents perfect predictions
-       - Points above the line: Model underestimated CGPA
-       - Points below the line: Model overestimated CGPA
-       - Points close to line: Accurate predictions
-       - Tight clustering around diagonal = good model
-    
-    Q: What if points are scattered far from the diagonal?
-    A: It means the model has high prediction error and may need
-       improvement (more features, different algorithm, etc.)
     """
     print("\n📊 Creating Actual vs Predicted visualization...")
     
@@ -340,12 +243,6 @@ def plot_actual_vs_predicted(y_test, y_pred, save_path=None):
 def save_model(model, label_encoder, feature_names, filepath='student_performance_model.pkl'):
     """
     Save the trained model and preprocessing objects for deployment.
-    
-    For Viva:
-    ---------
-    Q: Why do we save the model?
-    A: So we can use it later without retraining. In deployment,
-       we load the saved model to make predictions on new data.
     """
     print(f"\n💾 Saving model to {filepath}...")
     
@@ -362,7 +259,6 @@ def save_model(model, label_encoder, feature_names, filepath='student_performanc
 
 def run_full_pipeline(filepath):
     """
-    Run the complete model training and evaluation pipeline.
     """
     print("\n" + "=" * 60)
     print("STUDENT PERFORMANCE PREDICTION - MODEL TRAINING")

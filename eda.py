@@ -79,24 +79,6 @@ def display_basic_info(df):
 def plot_correlation_heatmap(df, save_path=None):
     """
     VISUALIZATION 1: Correlation Heatmap
-    
-    Purpose:
-    --------
-    Shows the correlation between all numeric variables.
-    Helps identify which features are strongly related to CGPA.
-    
-    Interpretation:
-    ---------------
-    - Values close to +1: Strong positive correlation
-    - Values close to -1: Strong negative correlation  
-    - Values close to 0: No correlation
-    
-    For Viva:
-    ---------
-    Q: What does correlation tell us?
-    A: Correlation measures the linear relationship between two variables.
-       A high positive correlation between HSC Percentage and CGPA means
-       students with higher HSC marks tend to have higher CGPA.
     """
     # Select only numeric columns for correlation
     numeric_cols = df.select_dtypes(include=[np.number]).columns
@@ -143,12 +125,6 @@ def plot_hsc_vs_cgpa(df, save_path=None):
     Shows the relationship between HSC (Higher Secondary Certificate) 
     percentage and CGPA. This is typically the strongest predictor.
     
-    For Viva:
-    ---------
-    Q: Why is HSC Percentage important for predicting CGPA?
-    A: HSC Percentage represents prior academic performance. Students who
-       performed well in HSC typically continue to perform well in university,
-       showing a positive correlation with CGPA.
     """
     plt.figure(figsize=(10, 7))
     
@@ -197,14 +173,6 @@ def plot_cgpa_by_gender(df, save_path=None):
     Shows how CGPA is distributed across different genders.
     Helps identify if there are any demographic patterns.
     
-    For Viva:
-    ---------
-    Q: What does a box plot show?
-    A: A box plot shows:
-       - Median (middle line)
-       - Interquartile range (the box - 25th to 75th percentile)
-       - Whiskers (data range excluding outliers)
-       - Outliers (individual points beyond whiskers)
     """
     plt.figure(figsize=(10, 7))
     
